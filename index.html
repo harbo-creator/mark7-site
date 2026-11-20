@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark 7 Industries LLC</title>
+<meta name="description" content="Mark 7 Industries LLC is a Virginia company that builds and publishes mobile and web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:#000; color:#fff; font-family:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height:1.7; -webkit-font-smoothing:antialiased; }
+
+  /* Hero: blank black screen, name fades in */
+  .hero { height:100vh; height:100svh; display:flex; align-items:center; justify-content:center; position:relative; padding:0 24px; }
+  .title {
+    font-family:"Archivo Black", Impact, "Arial Black", sans-serif;
+    font-size:clamp(2.6rem, 9vw, 8rem);
+    line-height:.95; letter-spacing:.02em; text-transform:uppercase; text-align:center;
+    opacity:0; filter:blur(6px);
+    animation:reveal 3.2s ease-out 1s forwards;
+  }
+  @keyframes reveal { to { opacity:1; filter:blur(0); } }
+
+  .cue {
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    color:#777; font-size:.75rem; letter-spacing:.3em; text-transform:uppercase; text-decoration:none;
+    opacity:0; animation:fadein 1.5s ease-out 4.6s forwards;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .cue::after { content:""; width:1px; height:36px; background:linear-gradient(#777, transparent); animation:drip 2s ease-in-out infinite; }
+  @keyframes fadein { to { opacity:1; } }
+  @keyframes drip { 0%,100% { transform:scaleY(.4); transform-origin:top; } 50% { transform:scaleY(1); transform-origin:top; } }
+
+  /* Sections revealed on scroll */
+  section { min-height:80vh; display:flex; align-items:center; padding:96px 24px; border-top:1px solid #161616; }
+  .inner { max-width:720px; margin:0 auto; width:100%; }
+  .label { font-size:.75rem; letter-spacing:.3em; text-transform:uppercase; color:#777; margin-bottom:20px; }
+  h2 { font-family:"Archivo Black", Impact, "Arial Black", sans-serif; font-size:clamp(2rem, 5vw, 3.4rem); line-height:1.05; text-transform:uppercase; margin-bottom:24px; }
+  p { color:#bbb; font-size:1.1rem; max-width:600px; }
+  a { color:#fff; }
+  .btn { display:inline-block; margin-top:28px; padding:14px 26px; border:1px solid #fff; color:#fff; text-decoration:none; font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; transition:background .25s, color .25s; }
+  .btn:hover { background:#fff; color:#000; }
+
+  .fade { opacity:0; transform:translateY(28px); transition:opacity 1.1s ease-out, transform 1.1s ease-out; }
+  .fade.in { opacity:1; transform:none; }
+
+  footer { padding:40px 24px 56px; text-align:center; color:#555; font-size:.85rem; border-top:1px solid #161616; }
+  footer a { color:#777; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .title, .cue { animation:none; opacity:1; filter:none; }
+    .fade { opacity:1; transform:none; transition:none; }
+    html { scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1 class="title">Mark 7<br>Industries</h1>
+  <a class="cue" href="#about">Scroll</a>
+</div>
+
+<section id="about">
+  <div class="inner fade">
+    <div class="label">About</div>
+    <h2>Practical software, built to work.</h2>
+    <p>Mark 7 Industries LLC is a Virginia company that designs, builds and publishes focused, reliable apps for iPhone, iPad and the web. We support every product we publish.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="inner fade">
+    <div class="label">Contact</div>
+    <h2>Get in touch.</h2>
+    <p>For support, business inquiries or privacy questions, email <a href="mailto:contact@mark7industries.com">contact@mark7industries.com</a>.</p>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="inner fade">
+    <div class="label">Privacy</div>
+    <h2>Your data stays yours.</h2>
+    <p>We don't sell personal information or use it for third-party advertising. Read the full policy for details on what our apps collect and how it's handled.</p>
+    <a class="btn" href="/privacy.html">Privacy Policy</a>
+  </div>
+</section>
+
+<footer>&copy; <span id="y">2026</span> Mark 7 Industries LLC &middot; Virginia, USA &middot; <a href="/privacy.html">Privacy Policy</a></footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  var items = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.2 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
