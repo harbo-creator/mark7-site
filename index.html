@@ -16,12 +16,11 @@
   /* Hero: blank black screen, name fades in */
   .hero { height:100vh; height:100svh; display:flex; align-items:center; justify-content:center; position:relative; padding:0 24px; }
   .title {
-    font-family:"Archivo Black", Impact, "Arial Black", sans-serif;
-    font-size:clamp(2.6rem, 9vw, 8rem);
-    line-height:.95; letter-spacing:.02em; text-transform:uppercase; text-align:center;
+    width:min(100%, 860px); line-height:0;
     opacity:0; filter:blur(6px);
     animation:reveal 3.2s ease-out 1s forwards;
   }
+  .title img { display:block; width:100%; height:auto; }
   @keyframes reveal { to { opacity:1; filter:blur(0); } }
 
   .cue {
@@ -60,7 +59,7 @@
 <body>
 
 <div class="hero">
-  <h1 class="title">Mark 7<br>Industries</h1>
+  <h1 class="title"><img src="/assets/logo.png" width="1707" height="351" alt="Mark 7 Industries"></h1>
   <a class="cue" href="#about">Scroll</a>
 </div>
 

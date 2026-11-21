@@ -12,8 +12,8 @@
   .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
   header { border-bottom:1px solid var(--line); background:#000; }
   header .wrap { display:flex; justify-content:space-between; align-items:center; height:64px; }
-  .logo { font-family:"Archivo Black", Impact, sans-serif; font-weight:400; letter-spacing:.04em; font-size:1.05rem; color:var(--ink); text-decoration:none; }
-  .logo span { color:#fff; }
+  .logo { display:block; flex-shrink:0; line-height:0; }
+  .logo img { display:block; height:34px; width:auto; }
   nav a { color:var(--muted); text-decoration:none; margin-left:20px; font-size:.95rem; }
   main { padding:56px 0; }
   h1 { font-family:"Archivo Black", Impact, sans-serif; font-weight:400; text-transform:uppercase; font-size:2rem; margin-bottom:6px; }
@@ -29,7 +29,7 @@
 <body>
 <header>
   <div class="wrap">
-    <a class="logo" href="/">MARK <span>7</span> INDUSTRIES</a>
+    <a class="logo" href="/"><img src="/assets/logo.png" width="1707" height="351" alt="Mark 7 Industries"></a>
     <nav><a href="/">Home</a><a href="/privacy.html">Privacy</a></nav>
   </div>
 </header>
